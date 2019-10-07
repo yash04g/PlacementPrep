@@ -48,16 +48,17 @@ int main(){
 	for(int i=0;i<n;i++){
 		cin>>arr[i];
 	}
-	int *tree = new int[2*n];
+	// Always make Segment tree of size 4*n
+	int *tree = new int[4*n];
 	buildTree(arr,tree,0,n-1,1);
-	for(int i=1;i<=2*n;i++){
+	for(int i=1;i<=4*n;i++){
 		cout<<tree[i]<<" ";
 	}
 	cout<<endl;
 	int idx,val;
 	cin>>idx>>val;
 	updateTree(arr,tree,0,n-1,1,idx,val);
-	for(int i=1;i<=2*n;i++){
+	for(int i=1;i<=4*n;i++){
 		cout<<tree[i]<<" ";
 	}
 	cout<<endl;
