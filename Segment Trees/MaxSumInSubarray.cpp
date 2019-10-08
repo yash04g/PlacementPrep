@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define MIN -15008
 class node{
 public:
 	int maxSum;
@@ -30,13 +31,14 @@ void buildTree(int *arr,node *tree,int start,int end,int treeIndex){
 
 node query(node *tree,int start,int end,int treeIndex,int left,int right){
 	if(start>right || end<left){
-		node ans = {INT_MIN,INT_MIN,INT_MIN,INT_MIN};
+		node ans = {MIN,MIN,MIN,MIN};
 		return ans;
 	}
 	if(start>=left && end<=right){
 		return tree[treeIndex];
 	}
 	int mid = (start+end)/2;
+	// Adding -ve number to INT_MIN makes it positive
 	// if(left>mid){
 	// 	return query(tree,mid+1,end,2*treeIndex+1,left,right);
 	// }
