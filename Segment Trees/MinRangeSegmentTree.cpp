@@ -39,22 +39,25 @@ int queryTree(int *tree,int start,int end,int TreeNode,int left,int right){
 int main(){
     int n,q;
     cin>>n>>q;
-    int *arr = new int[n+1];
-	for(int i=1;i<=n;i++){
+    int *arr = new int[n];
+	for(int i=0;i<n;i++){
 		cin>>arr[i];
 	}
     int *tree = new int[4*n];
-    buildTree(arr,tree,1,n,1);
+    buildTree(arr,tree,0,n-1,1);
     while(q--){
         char query;
         cin>>query;
         int idx,val;
         cin>>idx>>val;
         if(query=='u'){
-            update(arr,tree,1,n,1,idx,val);
+            idx--;
+            update(arr,tree,0,n-1,1,idx,val);
         }
         if(query=='q'){
-            int ans = queryTree(tree,1,n,1,idx,val);
+            idx--;
+            val--;
+            int ans = queryTree(tree,0,n-1,1,idx,val);
             cout<<ans<<endl;
         }
     }
