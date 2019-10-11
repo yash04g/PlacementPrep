@@ -28,35 +28,14 @@ int main(){
     	int n,r;
     	cin>>n>>r;
     	vi pos(n);
-    	fo(i,n)
-    		cin>>pos[i];
+    	fo(i,n)	cin>>pos[i];
     	sort(pos.begin(),pos.end());
-    	int cnt = 0;
-    	int largest = pos[n-1];
-    	int index = n-1;
-    	int deaths = 0;
-
-    	while(1){
-    		if(deaths==n){
-    			break;
-    		}
-    		for(int i=index;i>=0 && pos[i]>0;i--){
-    			if(pos[i]==largest){
-    				pos[i] = 0;
-    				index = i-1;
-    				deaths++;
-    			}
-    			else{
-    				pos[i] -=r;
-    				if(pos[i]<=0){
-    					deaths++;
-    				}
-    			}
-    		}
-    		largest = pos[index];
-    		cnt++;
-    	}
-    	cout<<cnt<<endl;
+        int cnt = 1;
+        for(int i=n-2;i>=0 && pos[i]-cnt*r>0;i--){
+            if(pos[i]!=pos[i+1])
+                cnt++;
+        }
+        cout<<cnt<<endl;
 
     }
 

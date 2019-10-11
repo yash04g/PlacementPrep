@@ -17,37 +17,38 @@ using namespace std;
 #define mod 1000000007
 #define pii pair<int,int>
 #define pdd pair<double,double>
-
 int main(){
 	ios::sync_with_stdio(false);
   	cin.tie(0);
   	cout.tie(0);
-
-	int q;
+  	int q;
   	cin>>q;
   	while(q--){
-  		ll h,n;
+  		long h;
+  		int n;
   		cin>>h>>n;
-  		ll *platform = new ll[n+1]();
-  		// vll platform(h+1,0);
-  		for(int j=0;j<n;j++){
-  			ll temp;
-  			cin>>temp;
-  			platform[temp]=1;
+  		string s(h+1,'0');
+  		// cout<<s;
+  		Fo(i,1,n+1){
+  			int m;
+  			cin>>m;
+  			s[m] = '1';
   		}
-  		ll cnt=0;
-  		ll index=h;
-  		while(index){
-	  		if(platform[index-1]==0)
-	  			index--;
-	  		else if(platform[index-2]==1)
-	  			index-=2;
-	  		else{
-	  			if(index!=2)
-	  				cnt++;
-	  			index-=2;
-	  		}
-	  	}
+  		s[h] = '1';
+  		long i=h;
+  		int cnt = 0;
+  		while(i){
+  			if(s[i-1]=='0'){
+  				i -= 1;
+  			}else if(s[i-2]=='1'){
+  				i -= 2;
+  			}else{
+  				if(i!=2){
+  					cnt++;
+  				}
+  				i -= 2;
+  			}
+  		}
   		cout<<cnt<<endl;
   	}
 }
